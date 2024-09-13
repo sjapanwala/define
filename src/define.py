@@ -38,9 +38,21 @@ def construction_min(api_data):
             if j < 2:
                 print(f' \033[91m↳  {antonyms}\033[0m')
 
+def help():
+    help_menu = {
+            'define': 'define a word with the arg "-d", need a word after the arg',
+            'RWD': 'find a random word and define it with "-rwd", no arg required after'
+            }
+    word = 'Define; Python Terminal Dictionary'
+    phonetic = '/dɪˈfaɪn/; /ˈpaɪθɑn/ /ˈtɝmənəɫ/ /ˈdɪkʃəˌnɛɹi/'
+    print(f"\n{len('hello') * ' '}\033[1;95m{word}\n\033[0m{(len('hello') + (int(len('hello') / 2))) * " "}\033[35m{phonetic}\033[0m")
+    for i in help_menu:
+        print(f'\n\033[34m{i.capitalize()}\n↳ \033[97m{help_menu[i]}\033[0m')
+
+
         
 def main():
-    recognized_args = ['-d']
+    recognized_args = ['-d','-h']
     if len(sys.argv) < 2:
         print(f"\033[91mERR!: \033[0mPlease Enter An Arg")
         exit()
@@ -52,7 +64,11 @@ def main():
             exit()
         api_data = get_raw(sys.argv[2])
         construction_min(api_data)
-    
+
+    elif sys.argv[1] == '-h':
+        help()
+        exit()
+            
 
 if __name__ == "__main__":
     main()
