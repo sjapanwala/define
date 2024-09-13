@@ -1,0 +1,2 @@
+# define
+terminal dictionary
